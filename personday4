@@ -1,0 +1,157 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day4;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author macstudent
+ */
+class Person {
+
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author macstudent
+ */
+/*public class Person {*/
+    
+    String name;
+    String address;
+    String phoneNo;
+    int age;
+    char gender;
+    Scanner in = new Scanner(System.in);
+    boolean toString;
+    
+    
+    //default const.
+    
+    Person(){
+        name = "unknown";
+        address ="unknown";
+        phoneNo = "unknown";
+        age = 1;
+        gender = 'U';
+        
+        
+    }
+    
+    //parameterized const.
+    
+    Person(String name, String address, String phoneNo, char gender, int age){
+        this.name = name;
+        this.address = address;
+        this.phoneNo = phoneNo;
+        this.gender = gender;
+        this.age = age;
+        
+        
+    }
+    
+    
+    //copy const.
+    
+    Person(Person anotherPerson){
+        this.name = anotherPerson.name;
+        this.address = anotherPerson.address;
+        this.age = anotherPerson.age;
+        this.phoneNo = anotherPerson.phoneNo;
+        this.gender = anotherPerson.gender;
+        
+    }
+    
+    void setName(){
+        
+        System.out.println("Enter Name :");
+        name = in.nextLine();
+        
+    }
+   
+    String getName(){
+        return name;    
+    }
+    
+    
+    void setAddress(){
+        
+        System.out.println("Enter Address :");
+        address = in.nextLine();
+        
+    }
+   
+    String getAddress(){
+        return address;    
+    }
+    
+    void setPhoneNo(){
+        
+        System.out.println("Enter PhoneNo :");
+        phoneNo = in.nextLine();
+        
+    }
+   
+    String getPhoneNo(){
+        return phoneNo;    
+    }
+    
+    
+    void setGender(){
+        
+        System.out.println("Enter Gender :");
+        gender = (char)in.nextInt();
+        in.nextLine();
+        
+    }
+   
+    int getGender(){
+        return gender;    
+    }
+    
+    
+    void setAge(){
+        
+        System.out.println("Enter Age :");
+        //age = in.nextInt();
+       age = Integer.parseInt(in.nextLine());
+    }
+   
+    int getAge(){
+        return age;    
+    }
+    
+    
+    
+    @Override
+    public String toString(){
+      
+        String data = "Name :" + name + "\n" + "Address :" + address + "\n" +"PhoneNo :" + phoneNo + "\n"
+                + "Gender :" + gender + "\n" + "Age :" + age + "\n";
+        
+        return data;
+        
+    }
+    
+    void setData(){
+        setName();
+        setAddress();
+        setPhoneNo();
+        setAge();
+        setGender();
+        
+    }
+    
+}
+
+    
+
