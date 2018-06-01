@@ -1,0 +1,57 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day4;
+
+/**
+ *
+ * @author macstudent
+ */
+
+//inheritance
+public class Employee extends Person {
+    String empID;
+    int dept;
+    String joiningDate;
+    
+    //
+    //constructor
+    //
+    
+    Employee(){
+        
+        super();
+        this.empID = "temp";
+        this.dept = 0;
+        this.joiningDate = "not started";
+        
+    }
+    
+    
+    Employee(String name, String address, String phoneNo, int age, char gender, String empID, int dept, String joiningDate){
+        
+        super(name,address,phoneNo,gender,age);
+        this.empID =empID;
+        this.dept = dept;
+        this.joiningDate = joiningDate;
+        
+    }
+    
+    
+    @Override
+    public String toString(){
+        
+        String personalDetails = super.toString();
+        
+        String data = "Employee ID :" + this.empID + "\n" + "Department :" + this.dept + "\n" + "Joining Date :" + this.joiningDate; 
+        
+        
+        
+        
+        data = personalDetails + data;
+        return data;
+    }
+    
+}
