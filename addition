@@ -1,0 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package day6;
+
+/**
+ *
+ * @author macstudent
+ */
+public class Addition implements arithmetic, Multi {
+
+    @Override
+    public void display() {
+        System.out.println("Addition : " + (n1 + n2));
+    }
+
+    public void multiplication() {
+        System.out.println("Multiplication : " + (n1 * n2));
+
+    }
+
+}
