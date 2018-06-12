@@ -1,32 +1,29 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Author: Jigisha Patel
+ * Purpose: Academic
+ * 
  */
 package game;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author macstudent
+ * @author jkp
  */
 public class TicTacToe extends javax.swing.JFrame {
-    
-    char board[][]= {
+    char board[][] = {
         {'J','J','J'},
         {'J','J','J'},
         {'J','J','J'}
-           
-        
     };
-    
-    boolean player = true; // 'X'
+    boolean player = true;  // 'X'
+    boolean win = false;
     
     ImageIcon X = new ImageIcon(getClass().getResource("X.png"));
     ImageIcon O = new ImageIcon(getClass().getResource("O.png"));
-    
 
     /**
      * Creates new form TicTacToe
@@ -45,11 +42,11 @@ public class TicTacToe extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btn02 = new javax.swing.JButton();
         btn00 = new javax.swing.JButton();
+        btn02 = new javax.swing.JButton();
         btn01 = new javax.swing.JButton();
-        btn11 = new javax.swing.JButton();
         btn12 = new javax.swing.JButton();
+        btn11 = new javax.swing.JButton();
         btn10 = new javax.swing.JButton();
         btn22 = new javax.swing.JButton();
         btn21 = new javax.swing.JButton();
@@ -57,19 +54,20 @@ public class TicTacToe extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Krungthep", 2, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 88, 130));
-        jLabel1.setText("TIC TAC TOE");
-
-        btn02.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn02ActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Zapfino", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("Tic Tac Toe");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btn00.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn00ActionPerformed(evt);
+            }
+        });
+
+        btn02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn02ActionPerformed(evt);
             }
         });
 
@@ -79,15 +77,15 @@ public class TicTacToe extends javax.swing.JFrame {
             }
         });
 
-        btn11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn11ActionPerformed(evt);
-            }
-        });
-
         btn12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn12ActionPerformed(evt);
+            }
+        });
+
+        btn11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn11ActionPerformed(evt);
             }
         });
 
@@ -119,55 +117,52 @@ public class TicTacToe extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(117, 117, 117)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn00, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn01, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn02, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn11, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn21, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn22, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn12, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(112, Short.MAX_VALUE))
+                        .addComponent(btn20, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(btn21, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn22, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btn10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(14, 14, 14)
+                            .addComponent(btn11, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn12, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btn00, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(14, 14, 14)
+                            .addComponent(btn01, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn02, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn00, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn01, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn02, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn11, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn12, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn22, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btn21, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn00, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn02, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn01, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn10, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn12, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn11, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn20, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn22, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn21, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,43 +170,42 @@ public class TicTacToe extends javax.swing.JFrame {
 
     private void btn00ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn00ActionPerformed
         // TODO add your handling code here:
-      select(this.btn00, 00);
-              
+        select(this.btn00,00);
     }//GEN-LAST:event_btn00ActionPerformed
 
     private void btn01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn01ActionPerformed
         // TODO add your handling code here:
-        select(this.btn01, 01);
+        select(this.btn01,01);
     }//GEN-LAST:event_btn01ActionPerformed
 
     private void btn02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn02ActionPerformed
         // TODO add your handling code here:
-        select(this.btn02, 02);
+        select(this.btn02,02);
     }//GEN-LAST:event_btn02ActionPerformed
 
     private void btn10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn10ActionPerformed
+        select(this.btn10,10);
         // TODO add your handling code here:
-        select(this.btn10, 10);
     }//GEN-LAST:event_btn10ActionPerformed
 
     private void btn11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn11ActionPerformed
         // TODO add your handling code here:
-        select(this.btn11, 11);
+        select(this.btn11,11);
     }//GEN-LAST:event_btn11ActionPerformed
 
     private void btn12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn12ActionPerformed
         // TODO add your handling code here:
-        select(this.btn12, 12);
+        select(this.btn12,12);
     }//GEN-LAST:event_btn12ActionPerformed
 
     private void btn20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn20ActionPerformed
         // TODO add your handling code here:
-        select(this.btn20, 20);
+        select(this.btn20,20);
     }//GEN-LAST:event_btn20ActionPerformed
 
     private void btn21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn21ActionPerformed
         // TODO add your handling code here:
-        select(this.btn21, 21);
+        select(this.btn21,21);
     }//GEN-LAST:event_btn21ActionPerformed
 
     private void btn22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn22ActionPerformed
@@ -219,25 +213,118 @@ public class TicTacToe extends javax.swing.JFrame {
         select(this.btn22, 22);
     }//GEN-LAST:event_btn22ActionPerformed
 
-     void select(JButton btn, int cell){
-         
-         
-         int row = cell / 10;
-         int col = cell % 10;
-         
-         if(player){
-           // X
-           btn.setIcon(X);
-           board[row][col] = 'X';
-       } else {
-           // O
-          btn.setIcon(O); 
-          board[row][col] = 'O';
-       }
-         btn.setEnabled(false);
-         player = !player;
-     }
+    void select(JButton btn, int cell){
+        
+        int row = cell / 10;
+        int col = cell % 10;
+        
+        if (player){
+            //player X
+            btn.setIcon(X);
+            board[row][col] = 'X';
+        }else{
+            //player O
+            btn.setIcon(O);
+            board[row][col] = 'O';
+        }
+        
+        btn.setEnabled(false);
+        player = !player;
+        
+        checkWin();
+    }
     
+    void checkWin(){
+        //check for row
+        for(int i=0 ; i<3; i++){
+            if ((board[i][0] == board[i][1]) && (board[i][0] == board[i][2])
+                    && (board[i][0] != 'J')){
+                JOptionPane.showMessageDialog(this, " Player " + 
+                        board[i][0] +" won the game");
+                win = true;
+                disableAllButtons();
+            }
+        }
+        
+        //check for column
+        for(int i=0 ; i<3; i++){
+            if ((board[0][i] == board[1][i]) && (board[0][i] == board[2][i])
+                    && (board[0][i] != 'J')){
+                JOptionPane.showMessageDialog(this, " Player " + 
+                        board[0][i] +" won the game");
+                win = true;
+                disableAllButtons();
+            }
+        }
+        
+        //check for diagonal win
+        
+        if (((board[0][0] == board [1][1]) && 
+                (board[0][0] == board [2][2]) &&
+                (board[0][0] != 'J')) || 
+                (((board[0][2] == board [1][1]) && 
+                (board[0][2] == board [2][0]) &&
+                (board[0][2] != 'J')))){
+            JOptionPane.showMessageDialog(this, "Player " 
+                    + board[1][1] + " wins...!!!");
+            disableAllButtons();
+            win = true;
+        }
+        
+        if (win){
+            //ask to play again
+            int answer = JOptionPane.showConfirmDialog(this, "Do you want to play again ?", " Play again", JOptionPane.YES_NO_OPTION);
+
+            if (answer == JOptionPane.YES_OPTION){
+                restartGame();
+            }else{
+                System.exit(0);
+            }
+        }
+    }
+    
+     public void disableAllButtons(){
+        this.btn00.setEnabled(false);
+        this.btn01.setEnabled(false);
+        this.btn02.setEnabled(false);
+        this.btn10.setEnabled(false);
+        this.btn11.setEnabled(false);
+        this.btn12.setEnabled(false);
+        this.btn20.setEnabled(false);
+        this.btn21.setEnabled(false);
+        this.btn22.setEnabled(false);
+    }
+    
+    public void restartGame(){
+        this.btn00.setEnabled(true);
+        this.btn00.setIcon(null);
+        this.btn01.setEnabled(true);
+        this.btn01.setIcon(null);
+        this.btn02.setEnabled(true);
+        this.btn02.setIcon(null);
+        this.btn10.setEnabled(true);
+        this.btn10.setIcon(null);
+        this.btn11.setEnabled(true);
+        this.btn11.setIcon(null);
+        this.btn12.setEnabled(true);
+        this.btn12.setIcon(null);
+        this.btn20.setEnabled(true);
+        this.btn20.setIcon(null);
+        this.btn21.setEnabled(true);
+        this.btn21.setIcon(null);
+        this.btn22.setEnabled(true);
+        this.btn22.setIcon(null);
+        
+        player = true;
+        win = false;
+        
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                board[i][j] = 'J';
+            }
+        }
+        
+    }
     /**
      * @param args the command line arguments
      */
